@@ -7,9 +7,20 @@ import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 import moment from "moment";
 import "./react-big-calendar.css";
 import {event} from "./events"
+import axios from "axios"
 
 BigCalendar.momentLocalizer(moment);
 const DragAndDropCalendar = withDragAndDrop(BigCalendar);
+let eventData;
+function getData(){
+  axios.get(`https://backend-app-tjba.onrender.com/appointment`)
+  .then(res => {
+    eventData=res.data
+    console.log(eventData)
+})
+}
+
+getData()
 
 
 
